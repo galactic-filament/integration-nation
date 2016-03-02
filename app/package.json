@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "http-status": "^0.2.0",
     "supertest": "^1.1.0",
     "tap-parser": "^1.2.2",
     "tape": "^4.4.0"

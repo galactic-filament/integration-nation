@@ -24,6 +24,7 @@
     "files": [
         "src/tap-parser.ts",
         "test/home.ts",
+        "typings/http-status/http-status.d.ts",
         "typings/node/node.d.ts",
         "typings/superagent/superagent.d.ts",
         "typings/supertest/supertest.d.ts",

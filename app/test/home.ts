@@ -1,6 +1,7 @@
 /// <reference path="../typings/tsd.d.ts" />
 import * as supertest from "supertest";
 import * as test from "tape";
+import * as HTTPStatus from "http-status";
 
 let request = supertest("http://ApiServer");
 
@@ -12,7 +13,7 @@ let createPost = (t: test.Test, cb: PostCallback) => {
   request
     .post(url)
     .send({ body: "Hello, world!" })
-    .expect(200)
+    .expect(HTTPStatus.CREATED)
     .expect("Content-type", "application/json")
     .end((err: Error, res: supertest.Response) => {
       t.equal(err, null, `POST ${url} err was not null`);
@@ -30,16 +31,11 @@ test("Homepage Should return standard greeting", (t: test.Test) => {
   let url = "/";
   request
     .get(url)
-    .expect(200)
-    .expect("Content-type", "text/plain")
+    .expect(HTTPStatus.OK)
+    .expect("Content-type", /^text\/plain/)
+    .expect("Hello, world!")
     .end((err: Error, res: supertest.Response) => {
       t.equal(err, null, `GET ${url} err was not null`);
-      if (err) {
-        t.end();
-        return;
-      }
-
-      t.equal(res.text, "Hello, world!", `GET  ${url} response body was not Hello, world!`);
       t.end();
     });
 });
@@ -47,16 +43,11 @@ test("Ping endpoint Should respond to standard ping", (t: test.Test) => {
   let url = "/ping";
   request
     .get(url)
-    .expect(200)
-    .expect("Content-type", "text/plain")
+    .expect(HTTPStatus.OK)
+    .expect("Content-type", /^text\/plain/)
+    .expect("Pong")
     .end((err: Error, res: supertest.Response) => {
       t.equal(err, null, `GET ${url} err was not null`);
-      if (err) {
-        t.end();
-        return;
-      }
-
-      t.equal(res.text, "Pong", `GET ${url} response body was not Pong`);
       t.end();
     });
 });
@@ -66,7 +57,7 @@ test("Json reflection Should return identical Json in response as provided by re
   request
     .post(url)
     .send(body)
-    .expect(200)
+    .expect(HTTPStatus.OK)
     .expect("Content-type", "application/json")
     .end((err: Error, res: supertest.Response) => {
       t.equal(err, null, `POST ${url} err was not null`);
@@ -87,7 +78,8 @@ test("Post endpoint Should return a post", (t: test.Test) => {
     let url = "/post/" + id;
     request
       .get(url)
-      .expect(200)
+      .expect(HTTPStatus.OK)
+      .expect("Content-type", "application/json")
       .end(function getPostEnd(err: Error, res: supertest.Response) {
         t.equal(err, null, `GET ${url} err was not null`);
         t.end();
@@ -99,7 +91,8 @@ test("Post endpoint Should delete a post", (t: test.Test) => {
     let url = "/post/" + id;
     request
       .delete(url)
-      .expect(200)
+      .expect(HTTPStatus.OK)
+      .expect("Content-type", "application/json")
       .end(function deletePostEnd(err: Error, res: supertest.Response) {
         t.equal(err, null, `DELETE ${url} err was not null`);
         t.end();
@@ -113,7 +106,8 @@ test("Post endpoint Should update a post", (t: test.Test) => {
     request
       .put(url)
       .send(body)
-      .expect(200)
+      .expect(HTTPStatus.OK)
+      .expect("Content-type", "application/json")
       .end(function updatePostEnd(err: Error, res: supertest.Response) {
         t.equal(err, null, `PUT ${url} err was not null`);
         t.equal(res.body.body, body.body, `PUT ${url} request and response bodies did not match`);

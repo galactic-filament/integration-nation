@@ -23,7 +23,8 @@
     "buildOnSave": false,
     "files": [
         "src/tap-parser.ts",
-        "test/home.ts",
+        "test/default.ts",
+        "test/posts.ts",
         "typings/http-status/http-status.d.ts",
         "typings/node/node.d.ts",
         "typings/superagent/superagent.d.ts",

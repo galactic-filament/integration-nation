@@ -36,7 +36,7 @@ test("Json reflection Should return identical Json in response as provided by re
     .post(url)
     .send(body)
     .expect(HTTPStatus.OK)
-    .expect("Content-type", "application/json")
+    .expect("Content-type", /^application\/json/)
     .end((err: Error, res: supertest.Response) => {
       t.equal(err, null, `POST ${url} err was not null`);
       if (err) {

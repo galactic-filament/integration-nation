@@ -14,7 +14,7 @@ let createPost = (t: test.Test, cb: PostCallback) => {
     .post(url)
     .send({ body: "Hello, world!" })
     .expect(HTTPStatus.CREATED)
-    .expect("Content-type", "application/json")
+    .expect("Content-type", /^application\/json/)
     .end((err: Error, res: supertest.Response) => {
       t.equal(err, null, `POST ${url} err was not null`);
       if (err) {
@@ -36,7 +36,7 @@ test("Post endpoint Should return a post", (t: test.Test) => {
     request
       .get(url)
       .expect(HTTPStatus.OK)
-      .expect("Content-type", "application/json")
+      .expect("Content-type", /^application\/json/)
       .end(function getPostEnd(err: Error, res: supertest.Response) {
         t.equal(err, null, `GET ${url} err was not null`);
         t.end();
@@ -49,7 +49,7 @@ test("Post endpoint Should delete a post", (t: test.Test) => {
     request
       .delete(url)
       .expect(HTTPStatus.OK)
-      .expect("Content-type", "application/json")
+      .expect("Content-type", /^application\/json/)
       .end(function deletePostEnd(err: Error, res: supertest.Response) {
         t.equal(err, null, `DELETE ${url} err was not null`);
         t.end();
@@ -64,7 +64,7 @@ test("Post endpoint Should update a post", (t: test.Test) => {
       .put(url)
       .send(body)
       .expect(HTTPStatus.OK)
-      .expect("Content-type", "application/json")
+      .expect("Content-type", /^application\/json/)
       .end(function updatePostEnd(err: Error, res: supertest.Response) {
         t.equal(err, null, `PUT ${url} err was not null`);
         t.equal(res.body.body, body.body, `PUT ${url} request and response bodies did not match`);

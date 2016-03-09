@@ -44,7 +44,7 @@ test("Json reflection Should return identical Json in response as provided by re
         return;
       }
 
-      t.equal(res.body.greeting, body.greeting, `POST ${url} greeting did not match`);
+      t.equal(res.body.greeting, body.greeting, `POST ${url} greeting matched`);
       t.end();
     });
 });

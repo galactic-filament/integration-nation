@@ -11,6 +11,6 @@ env:
 before_install:
 - cd ./app
 script:
-- exit 0
+- echo success
 after_success:
 - ../bin/docker-push ihsw/integration-nation

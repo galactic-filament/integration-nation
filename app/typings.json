@@ -1,0 +1,11 @@
+{
+  "globalDependencies": {
+    "http-status": "registry:dt/http-status#0.2.1+20160412142223",
+    "node": "registry:env/node#6.0.0+20161105011511",
+    "superagent": "registry:dt/superagent#2.0.0+20160906143408",
+    "supertest": "registry:dt/supertest#1.1.0+20161009200303"
+  },
+  "dependencies": {
+    "tape": "registry:npm/tape#4.0.0+20160723033700"
+  }
+}

@@ -1,38 +1,13 @@
 {
     "compilerOptions": {
-        "target": "es5",
         "module": "commonjs",
-        "moduleResolution": "node",
-        "isolatedModules": false,
-        "jsx": "react",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "declaration": false,
+        "target": "es6",
         "noImplicitAny": false,
-        "removeComments": true,
-        "noLib": false,
-        "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true
+        "sourceMap": false,
+        "outDir": "./dist"
     },
     "filesGlob": [
         "**/*.ts",
-        "**/*.tsx",
         "!node_modules/**"
-    ],
-    "compileOnSave": false,
-    "buildOnSave": false,
-    "files": [
-        "src/tap-parser.ts",
-        "test/default.ts",
-        "test/posts.ts",
-        "typings/http-status/http-status.d.ts",
-        "typings/node/node.d.ts",
-        "typings/superagent/superagent.d.ts",
-        "typings/supertest/supertest.d.ts",
-        "typings/tape/tape.d.ts",
-        "typings/tsd.d.ts"
-    ],
-    "atom": {
-        "rewriteTsconfig": true
-    }
+    ]
 }

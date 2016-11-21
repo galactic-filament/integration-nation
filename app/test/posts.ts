@@ -1,4 +1,4 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path="../typings/index.d.ts" />
 import * as supertest from "supertest";
 import * as test from "tape";
 import * as HTTPStatus from "http-status";

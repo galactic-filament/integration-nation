@@ -1,21 +1,24 @@
 {
-  "name": "app",
+  "name": "integration-nation",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "ts-node node_modules/tape/bin/tape ./test/**/*.ts"
+    "build": "tsc && echo built",
+    "lint": "tslint ./tests/**/*.ts && echo linted",
+    "test": "tsc && tape ./dist/test/**/*.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "http-status": "^0.2.0",
-    "supertest": "^1.1.0",
-    "tap-parser": "^1.2.2",
-    "tape": "^4.4.0"
+    "http-status": "^0.2.3",
+    "supertest": "^2.0.1",
+    "tap-parser": "^3.0.3",
+    "tape": "^4.6.2",
+    "tslint": "^4.0.1",
+    "typescript": "^2.0.10",
+    "typings": "^2.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "tap-spec": "^4.1.1"
+  }
 }

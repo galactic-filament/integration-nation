@@ -1,4 +1,4 @@
 #!/bin/bash
 
 while ! nc -z ApiServer 80; do echo 'sleeping for 3' && sleep 3; done
-npm test --silent | tap-spec
+npm test --silent | npm run tap-spec --silent

@@ -5,7 +5,9 @@
   "scripts": {
     "build": "tsc && echo built",
     "lint": "tslint ./tests/**/*.ts && echo linted",
-    "test": "tsc && tape ./dist/test/**/*.js"
+    "test": "tsc && tape ./dist/test/**/*.js",
+    "typings": "typings",
+    "tap-spec": "tap-spec"
   },
   "author": "",
   "license": "ISC",

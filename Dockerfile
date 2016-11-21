@@ -6,4 +6,7 @@ RUN apt-get update -q \
 COPY ./app /srv/app
 WORKDIR /srv/app
 
+RUN npm install \
+  && npm run typings install
+
 CMD ["./bin/run-tests"]

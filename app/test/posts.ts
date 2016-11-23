@@ -28,7 +28,7 @@ let createPost = (t: test.Test, cb: PostCallback) => {
 };
 
 test("Post creation endpoint Should return the new post's id", (t: test.Test) => {
-  createPost(t, (id: number) => t.end());
+  createPost(t, () => t.end());
 });
 test("Post endpoint Should return a post", (t: test.Test) => {
   createPost(t, (id: number) => {
@@ -37,7 +37,7 @@ test("Post endpoint Should return a post", (t: test.Test) => {
       .get(url)
       .expect(HTTPStatus.OK)
       .expect("Content-type", /^application\/json/)
-      .end(function getPostEnd(err: Error, res: supertest.Response) {
+      .end(function getPostEnd(err: Error) {
         t.equal(err, null, `GET ${url} err was not null`);
         t.end();
       });
@@ -50,7 +50,7 @@ test("Post endpoint Should delete a post", (t: test.Test) => {
       .delete(url)
       .expect(HTTPStatus.OK)
       .expect("Content-type", /^application\/json/)
-      .end(function deletePostEnd(err: Error, res: supertest.Response) {
+      .end(function deletePostEnd(err: Error) {
         t.equal(err, null, `DELETE ${url} err was not null`);
         t.end();
       });

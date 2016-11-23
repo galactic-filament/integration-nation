@@ -12,7 +12,7 @@ test("Homepage Should return standard greeting", (t: test.Test) => {
     .expect(HTTPStatus.OK)
     .expect("Content-type", /^text\/plain/)
     .expect("Hello, world!")
-    .end((err: Error, res: supertest.Response) => {
+    .end((err: Error) => {
       t.equal(err, null, `GET ${url} err was not null`);
       t.end();
     });
@@ -24,7 +24,7 @@ test("Ping endpoint Should respond to standard ping", (t: test.Test) => {
     .expect(HTTPStatus.OK)
     .expect("Content-type", /^text\/plain/)
     .expect("Pong")
-    .end((err: Error, res: supertest.Response) => {
+    .end((err: Error) => {
       t.equal(err, null, `GET ${url} err was not null`);
       t.end();
     });

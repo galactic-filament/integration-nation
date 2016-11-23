@@ -1,5 +1,5 @@
 /// <reference path="../typings/index.d.ts" />
-let parser = require("tap-parser");
+const parser = require("tap-parser");
 
 interface Result {
     ok: boolean;
@@ -33,13 +33,13 @@ interface OutputLine {
     actual: any;
 }
 
-let p = parser((result: Result) => {
+const p = parser((result: Result) => {
     if (result.ok) {
         console.dir({});
         return;
     }
 
-    let output: OutputLine[] = result.failures.map((failure: Failure) => {
+    const output: OutputLine[] = result.failures.map((failure: Failure) => {
         let message = failure.name;
         if (message.length === 0) {
             message = "<no message provided>";

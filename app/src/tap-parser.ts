@@ -46,10 +46,10 @@ let p = parser((result: Result) => {
         }
 
         return <OutputLine>{
-            message: message,
-            line: failure.diag.at,
+            actual: failure.diag.actual.toString(),
             expected: failure.diag.expected.toString(),
-            actual: failure.diag.actual.toString()
+            line: failure.diag.at,
+            message: message
         };
     });
     console.log(JSON.stringify({ output: output }));

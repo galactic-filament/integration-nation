@@ -3,10 +3,10 @@ import * as supertest from "supertest";
 import * as test from "tape";
 import * as HTTPStatus from "http-status";
 
-let request = supertest("http://ApiServer");
+const request = supertest("http://ApiServer");
 
 test("Homepage Should return standard greeting", (t: test.Test) => {
-  let url = "/";
+  const url = "/";
   request
     .get(url)
     .expect(HTTPStatus.OK)
@@ -18,7 +18,7 @@ test("Homepage Should return standard greeting", (t: test.Test) => {
     });
 });
 test("Ping endpoint Should respond to standard ping", (t: test.Test) => {
-  let url = "/ping";
+  const url = "/ping";
   request
     .get(url)
     .expect(HTTPStatus.OK)
@@ -30,8 +30,8 @@ test("Ping endpoint Should respond to standard ping", (t: test.Test) => {
     });
 });
 test("Json reflection Should return identical Json in response as provided by request", (t: test.Test) => {
-  let url = "/reflection";
-  let body = { greeting: "Hello, world!" };
+  const url = "/reflection";
+  const body = { greeting: "Hello, world!" };
   request
     .post(url)
     .send(body)

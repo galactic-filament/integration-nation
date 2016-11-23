@@ -3,13 +3,13 @@ import * as supertest from "supertest";
 import * as test from "tape";
 import * as HTTPStatus from "http-status";
 
-let request = supertest("http://ApiServer");
+const request = supertest("http://ApiServer");
 
 interface PostCallback {
   (id: number): void;
 }
-let createPost = (t: test.Test, cb: PostCallback) => {
-  let url = "/posts";
+const createPost = (t: test.Test, cb: PostCallback) => {
+  const url = "/posts";
   request
     .post(url)
     .send({ body: "Hello, world!" })
@@ -32,7 +32,7 @@ test("Post creation endpoint Should return the new post's id", (t: test.Test) =>
 });
 test("Post endpoint Should return a post", (t: test.Test) => {
   createPost(t, (id: number) => {
-    let url = "/post/" + id;
+    const url = "/post/" + id;
     request
       .get(url)
       .expect(HTTPStatus.OK)
@@ -43,23 +43,23 @@ test("Post endpoint Should return a post", (t: test.Test) => {
       });
   });
 });
-test("Post endpoint Should delete a post", (t: test.Test) => {
+test("Post endpoint Should deconste a post", (t: test.Test) => {
   createPost(t, (id: number) => {
-    let url = "/post/" + id;
+    const url = "/post/" + id;
     request
-      .delete(url)
+      .deconste(url)
       .expect(HTTPStatus.OK)
       .expect("Content-type", /^application\/json/)
-      .end(function deletePostEnd(err: Error) {
-        t.equal(err, null, `DELETE ${url} err was not null`);
+      .end(function deconstePostEnd(err: Error) {
+        t.equal(err, null, `DEconstE ${url} err was not null`);
         t.end();
       });
   });
 });
 test("Post endpoint Should update a post", (t: test.Test) => {
   createPost(t, (id: number) => {
-    let url = "/post/" + id;
-    let body = { body: "Jello, world!" };
+    const url = "/post/" + id;
+    const body = { body: "Jello, world!" };
     request
       .put(url)
       .send(body)

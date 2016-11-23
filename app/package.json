@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "tsc && echo built",
-    "lint": "tslint ./tests/**/*.ts && echo linted",
+    "build": "tsc --noUnusedParameters --noUnusedLocals && echo built",
+    "lint": "tslint ./tests/**/*.ts ./src/**/*.ts && echo linted",
     "test": "tape ./dist/test/**/*.js",
     "typings": "typings",
     "tap-spec": "tap-spec"

@@ -2,8 +2,7 @@
 import * as supertest from "supertest";
 import * as test from "tape";
 import * as HTTPStatus from "http-status";
-
-const request = supertest("http://ApiServer");
+import { request } from "./helper";
 
 test("Homepage Should return standard greeting", (t: test.Test) => {
   const url = "/";

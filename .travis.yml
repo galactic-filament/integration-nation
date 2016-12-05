@@ -13,4 +13,4 @@ before_install:
 script:
 - npm run lint
 after_success:
-- ../bin/docker-push ihsw/integration-nation
+- git clean -xfd && ../bin/docker-push ihsw/integration-nation

@@ -42,15 +42,15 @@ test("Post endpoint Should return a post", (t: test.Test) => {
       });
   });
 });
-test("Post endpoint Should deconste a post", (t: test.Test) => {
+test("Post endpoint Should delete a post", (t: test.Test) => {
   createPost(t, (id: number) => {
     const url = "/post/" + id;
     request
-      .deconste(url)
+      .delete(url)
       .expect(HTTPStatus.OK)
       .expect("Content-type", /^application\/json/)
-      .end(function deconstePostEnd(err: Error) {
-        t.equal(err, null, `DEconstE ${url} err was not null`);
+      .end(function deletePostEnd(err: Error) {
+        t.equal(err, null, `Delete ${url} err was not null`);
         t.end();
       });
   });

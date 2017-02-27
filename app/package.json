@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "tsc && echo built",
-    "lint": "tslint ./tests/**/*.ts ./src/**/*.ts && echo linted",
+    "lint": "tslint ./src/*.ts ./src/**/*.ts && echo linted",
     "test": "ava --verbose ./dist/test/*.js ./dist/test/**/*.js"
   },
   "author": "",

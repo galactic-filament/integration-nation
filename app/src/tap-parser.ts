@@ -1,4 +1,3 @@
-/// <reference path="../typings/index.d.ts" />
 const parser = require("tap-parser");
 
 interface Result {
@@ -12,6 +11,9 @@ interface Result {
 interface Plan {
     start: number;
     end: number;
+    skipAll: boolean;
+    skipReason: string;
+    comment: string;
 }
 interface Failure {
     ok: boolean;
@@ -43,6 +45,10 @@ const p = parser((result: Result) => {
         let message = failure.name;
         if (message.length === 0) {
             message = "<no message provided>";
+        }
+
+        if (!("diag" in failure)) {
+            return <OutputLine>{ message: message };
         }
 
         return <OutputLine>{

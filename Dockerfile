@@ -1,21 +1,15 @@
 FROM node
 
-RUN apt-get update -q \
-  && apt-get install -yq netcat
-
-# add user
-ENV APP_USER integration-nation
-ENV APP_DIR /home/$APP_USER/app
-RUN useradd -ms /bin/bash $APP_USER
-USER $APP_USER
+ENV API_PORT 80
+ENV API_HOST ApiServer
 
 # add app dir
-RUN mkdir $APP_DIR
-WORKDIR $APP_DIR
+ENV APP_DIR /srv/app
 COPY ./app $APP_DIR
+WORKDIR $APP_DIR
 
-RUN npm install --silent \
-  && npm run typings install --silent \
-  && npm run build --silent
+# build app
+RUN npm install -s \
+  && npm run build -s
 
 CMD ["./bin/run-tests"]

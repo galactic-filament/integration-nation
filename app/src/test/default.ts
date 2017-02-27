@@ -15,7 +15,7 @@ test("Homepage Should return standard greeting", async (t) => {
 
         t.is(res.status, HTTPStatus.OK, "Response code was not OK");
         t.is(/^text\/plain/.test(res.header["content-type"]), true, "Content-type was not text/plain");
-        t.is(res.text, "Hello, worlddd!", "Body was not standard greeting");
+        t.is(res.text, "Hello, world!", "Body was not standard greeting");
         resolve();
       });
   });

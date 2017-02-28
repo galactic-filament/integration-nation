@@ -10,6 +10,6 @@ WORKDIR $APP_DIR
 
 # build app
 RUN npm install -s \
-  && npm run build -s
+  && npm run -s build
 
 CMD ["./bin/run-tests"]
